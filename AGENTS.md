@@ -88,3 +88,4 @@ lib/ / src/
 - Store auth tokens securely using the platform's secure vault (e.g. Flutter Secure Storage / EncryptedSharedPreferences on Android & Keychain on iOS).
 - Never commit `.env`, keystore files (`.jks`, `.keystore`), certificates, or private keys.
 - Validate and sanitize all user input before sending payloads to the backend.
+

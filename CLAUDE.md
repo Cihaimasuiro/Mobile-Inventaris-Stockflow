@@ -12,3 +12,4 @@
 - Write tests alongside feature logic.
 - Follow Conventional Commits: `feat:`, `fix:`, `refactor:`, `chore:`, `test:`.
 - Output must be ADHD-friendly (lead with action, single next step, numbered small steps).
+

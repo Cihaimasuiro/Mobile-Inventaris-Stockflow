@@ -35,3 +35,4 @@ jobs:
         run: |
           echo "Checking files for syntax and editor consistency..."
           find . -maxdepth 3 -not -path '*/.*' -type f
+
