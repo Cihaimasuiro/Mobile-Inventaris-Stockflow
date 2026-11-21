@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Code & Structure Validation
+    name: Analyze & Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -31,8 +31,24 @@ jobs:
           fi
           echo "Secret check passed."
 
-      - name: Validate Line Endings & Formatting
-        run: |
-          echo "Checking files for syntax and editor consistency..."
-          find . -maxdepth 3 -not -path '*/.*' -type f
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
 
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Sebelum build_runner: file generated (*.g.dart) tidak ikut diperiksa formatnya.
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Generate code (Drift)
+        run: dart run build_runner build
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test --coverage

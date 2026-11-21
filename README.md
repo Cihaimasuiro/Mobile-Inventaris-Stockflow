@@ -36,7 +36,7 @@ Mengikuti prinsip **YAGNI & Zero Over-Engineering**, pengembangan Fase 1 difokus
 - **Kamera & Pemindai Barcode**: `mobile_scanner` (dukungan EAN-13, UPC, QR Code)
 - **Penyimpanan Kredensial**: `flutter_secure_storage` (Android Keystore / iOS Keychain)
 - **HTTP Client**: `dio` dengan interceptor token JWT dan deteksi jaringan `connectivity_plus`
-- **Backend API**: Stockflow REST API (`https://stokflow-be.vercel.app/api/v1`)
+- **Backend API**: Stockflow REST API (`https://stokflow-be.vercel.app/api`)
 
 ---
 

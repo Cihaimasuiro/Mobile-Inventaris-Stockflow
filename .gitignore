@@ -91,6 +91,10 @@ coverage/
 *.lcov
 .nyc_output/
 
+# Generated code (jalankan: dart run build_runner build --delete-conflicting-outputs)
+*.g.dart
+*.iml
+
 # Logs & Temporary files
 logs/
 *.log

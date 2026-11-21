@@ -1,0 +1,8 @@
+targets:
+  $default:
+    builders:
+      drift_dev:
+        options:
+          # Semua DateTime disimpan sebagai teks ISO-8601 (UTC) agar presisi milidetik
+          # dan mudah dibaca saat debugging. Lihat KONTRAK BERSAMA v1, bagian 4.
+          store_date_time_values_as_text: true
