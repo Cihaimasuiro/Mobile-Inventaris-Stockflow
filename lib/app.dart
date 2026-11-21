@@ -1,15 +1,20 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:stokflow/core/router/app_router.dart';
+import 'package:stokflow/core/theme/app_theme.dart';
 
-/// Placeholder root widget. MILIK B: ganti dengan MaterialApp.router (go_router),
-/// tema, dan auth guard. Dipanggil oleh `main.dart` dan `dev/main_fake.dart`.
-class StokflowApp extends StatelessWidget {
+/// Root aplikasi: tema dari mockup + router dengan auth guard (lihat `core/router/app_router.dart`).
+/// Dipanggil oleh `main.dart` dan `dev/main_fake.dart`.
+class StokflowApp extends ConsumerWidget {
   const StokflowApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(
       title: 'StokFlow',
-      home: Scaffold(body: Center(child: Text('StokFlow'))),
+      debugShowCheckedModeBanner: false,
+      theme: buildAppTheme(),
+      routerConfig: ref.watch(routerProvider),
     );
   }
 }

@@ -40,8 +40,18 @@ class FakeBackend {
     StreamSubscription<void>? sub;
     controller = StreamController<T>(
       onListen: () {
-        controller.add(read());
-        sub = _changes.stream.listen((_) => controller.add(read()));
+        // Kesalahan baca (mis. sesi sudah dihapus setelah logout) menjadi error stream, bukan
+        // exception liar di listener; Riverpod menampilkannya sebagai AsyncError.
+        void emit() {
+          try {
+            controller.add(read());
+          } on Object catch (error, stack) {
+            controller.addError(error, stack);
+          }
+        }
+
+        emit();
+        sub = _changes.stream.listen((_) => emit());
       },
       onCancel: () => sub?.cancel(),
     );

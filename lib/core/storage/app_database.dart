@@ -6,7 +6,9 @@ import 'package:stokflow/domain/entities/enums.dart';
 
 import '../../data/datasources/local/daos/business_dao.dart';
 import '../../data/datasources/local/daos/product_dao.dart';
+import '../../data/datasources/local/daos/pull_merge_dao.dart';
 import '../../data/datasources/local/daos/sync_dao.dart';
+import '../../data/datasources/local/daos/sync_queue_dao.dart';
 import '../../data/datasources/local/daos/transaction_dao.dart';
 import '../../data/datasources/local/enum_converters.dart';
 import '../../data/datasources/local/tables/businesses.dart';
@@ -20,7 +22,7 @@ part 'app_database.g.dart';
 /// Database lokal offline-first (SQLite lewat Drift). Skema: KONTRAK BERSAMA v1, bagian 4.
 @DriftDatabase(
   tables: [Businesses, Products, StockTransactions, StockTransactionItems, SyncStates],
-  daos: [BusinessDao, ProductDao, TransactionDao, SyncDao],
+  daos: [BusinessDao, ProductDao, TransactionDao, SyncDao, SyncQueueDao, PullMergeDao],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
